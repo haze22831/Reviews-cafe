@@ -1,20 +1,9 @@
 {
-    "1": {
-    "name": "ТРК Парус",
+    
+  "1": {
+    "name": "ТРЦ Парус",
     "yandex": "https://yandex.uz/maps/org/180116660862/reviews/?add-review=true",
     "gis": "https://2gis.uz/tashkent/firm/70000001037314618/tab/reviews",
-    "google": ""
-  }
-
-  },
-  "2": {
-    "yandex": "https://yandex.go.link/discovery?action=card&oid=180116660862&adj_campaign=Share-from-the-app",
-    "gis": "https://2gis.ru/tashkent/geo/70000001037314618/69.210850,41.292195",
-    "google": "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
-  },
-  "3": {
-    "yandex": "https://yandex.go.link/discovery?action=card&oid=180116660862&adj_campaign=Share-from-the-app",
-    "gis": "https://2gis.ru/tashkent/geo/70000001037314618/69.210850,41.292195",
     "google": "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
   }
 }
