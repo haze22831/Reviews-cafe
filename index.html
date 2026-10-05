@@ -51,7 +51,6 @@
       text-align: center;
     }
 
-    /* Селектор языка */
     .lang-switcher {
       display: inline-flex;
       background: rgba(255, 255, 255, 0.06);
@@ -157,7 +156,6 @@
 <body>
 
   <div class="container">
-    <!-- Переключатель языка -->
     <div class="lang-switcher">
       <button class="lang-btn" onclick="setLang('uz')">O'z</button>
       <button class="lang-btn active" onclick="setLang('ru')">Рус</button>
@@ -174,20 +172,17 @@
     <p class="subtitle" id="subtitle">Выберите сервис, в котором вам удобнее поставить оценку:</p>
 
     <div class="links-list">
-      <!-- Яндекс Карты -->
-      <a href="ССЫЛКА_НА_ЯНДЕКС" class="link-card" target="_blank" rel="noopener noreferrer">
+      <a id="btn-yandex" href="#" class="link-card" target="_blank" rel="noopener noreferrer">
         <span id="label-yandex">Яндекс Карты</span>
         <span class="arrow">→</span>
       </a>
 
-      <!-- 2ГИС -->
-      <a href="ССЫЛКА_НА_2ГИС" class="link-card" target="_blank" rel="noopener noreferrer">
+      <a id="btn-gis" href="#" class="link-card" target="_blank" rel="noopener noreferrer">
         <span>2ГИС</span>
         <span class="arrow">→</span>
       </a>
 
-      <!-- Google Карты -->
-      <a href="ССЫЛКА_НА_GOOGLE" class="link-card" target="_blank" rel="noopener noreferrer">
+      <a id="btn-google" href="#" class="link-card" target="_blank" rel="noopener noreferrer">
         <span id="label-google">Google Карты</span>
         <span class="arrow">→</span>
       </a>
@@ -197,6 +192,16 @@
   </div>
 
   <script>
+    // Чтение параметров из URL (?y=...&g=...&gm=...)
+    const params = new URLSearchParams(window.location.search);
+    const yLink = params.get('y');
+    const gLink = params.get('g');
+    const gmLink = params.get('gm');
+
+    if (yLink) document.getElementById('btn-yandex').href = decodeURIComponent(yLink);
+    if (gLink) document.getElementById('btn-gis').href = decodeURIComponent(gLink);
+    if (gmLink) document.getElementById('btn-google').href = decodeURIComponent(gmLink);
+
     const translations = {
       ru: {
         title: "Поделитесь отзывом",
