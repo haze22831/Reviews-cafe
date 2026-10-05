@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rate our service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --card-bg: rgba(22, 27, 34, 0.88);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(66, 133, 244, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(252, 63, 29, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(0, 186, 52, 0.08) 0px, transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      color: var(--text-main);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 390px;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 24px 20px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    /* Селектор языка */
+    .lang-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 3px;
+      margin-bottom: 24px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .icon-badge {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffb703;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .icon-badge svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    h1 {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    p.subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 24px;
+      min-height: 38px;
+    }
+
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .link-card:active {
+      transform: scale(0.98);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .arrow {
+      color: var(--text-muted);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Переключатель языка -->
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="setLang('uz')">O'z</button>
+      <button class="lang-btn active" onclick="setLang('ru')">Рус</button>
+      <button class="lang-btn" onclick="setLang('en')">Eng</button>
+    </div>
+
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>
+    </div>
+
+    <h1 id="title">Поделитесь отзывом</h1>
+    <p class="subtitle" id="subtitle">Выберите сервис, в котором вам удобнее поставить оценку:</p>
+
+    <div class="links-list">
+      <!-- Яндекс Карты -->
+      <a href="ССЫЛКА_НА_ЯНДЕКС" class="link-card" target="_blank" rel="noopener noreferrer">
+        <span id="label-yandex">Яндекс Карты</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- 2ГИС -->
+      <a href="ССЫЛКА_НА_2ГИС" class="link-card" target="_blank" rel="noopener noreferrer">
+        <span>2ГИС</span>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- Google Карты -->
+      <a href="ССЫЛКА_НА_GOOGLE" class="link-card" target="_blank" rel="noopener noreferrer">
+        <span id="label-google">Google Карты</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <footer id="footer">Это займет не более 15 секунд</footer>
+  </div>
+
+  <script>
+    const translations = {
+      ru: {
+        title: "Поделитесь отзывом",
+        subtitle: "Выберите сервис, в котором вам удобнее поставить оценку:",
+        labelYandex: "Яндекс Карты",
+        labelGoogle: "Google Карты",
+        footer: "Это займет не более 15 секунд"
+      },
+      uz: {
+        title: "Fikringizni qoldiring",
+        subtitle: "Baho berish uchun qulay xizmatni tanlang:",
+        labelYandex: "Yandex Xaritalar",
+        labelGoogle: "Google Maps",
+        footer: "Bu 15 soniyadan ko'p vaqt olmaydi"
+      },
+      en: {
+        title: "Share your feedback",
+        subtitle: "Choose your preferred platform to leave a review:",
+        labelYandex: "Yandex Maps",
+        labelGoogle: "Google Maps",
+        footer: "It takes less than 15 seconds"
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('subtitle').textContent = t.subtitle;
+      document.getElementById('label-yandex').textContent = t.labelYandex;
+      document.getElementById('label-google').textContent = t.labelGoogle;
+      document.getElementById('footer').textContent = t.footer;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick').includes(lang)) {
+          btn.classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
