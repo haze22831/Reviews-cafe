@@ -192,34 +192,25 @@
   </div>
 
   <script>
-    // БАЗА КЛИЕНТОВ (МЕНЯТЬ ТУТ)
-    const clients = {
-      "1": {
-        yandex: "https://yandex.go.link/discovery?action=card&oid=180116660862&adj_campaign=Share-from-the-app",
-        gis: "https://2gis.ru/tashkent/geo/70000001037314618/69.210850,41.292195",
-        google: "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
-      },
-      "2": {
-        yandex: "https://yandex.go.link/discovery?action=card&oid=180116660862&adj_campaign=Share-from-the-app",
-        gis: "https://2gis.ru/tashkent/geo/70000001037314618/69.210850,41.292195",
-        google: "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
-      },
-      "3": {
-        yandex: "https://yandex.go.link/discovery?action=card&oid=180116660862&adj_campaign=Share-from-the-app",
-        gis: "https://2gis.ru/tashkent/geo/70000001037314618/69.210850,41.292195",
-        google: "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
-      }
-    };
-
-    // Читаем параметр ?id=
+    // Загрузка ссылок из внешнего clients.json
     const params = new URLSearchParams(window.location.search);
     const cardId = params.get('id');
 
-    if (cardId && clients[cardId]) {
-      const data = clients[cardId];
-      if (data.yandex) document.getElementById('btn-yandex').href = data.yandex;
-      if (data.gis) document.getElementById('btn-gis').href = data.gis;
-      if (data.google) document.getElementById('btn-google').href = data.google;
+    if (cardId) {
+      fetch('./clients.json')
+        .then(response => {
+          if (!response.ok) throw new Error('Network error');
+          return response.json();
+        })
+        .then(clients => {
+          if (clients[cardId]) {
+            const data = clients[cardId];
+            if (data.yandex) document.getElementById('btn-yandex').href = data.yandex;
+            if (data.gis) document.getElementById('btn-gis').href = data.gis;
+            if (data.google) document.getElementById('btn-google').href = data.google;
+          }
+        })
+        .catch(err => console.error('Ошибка загрузки базы:', err));
     }
 
     const translations = {
