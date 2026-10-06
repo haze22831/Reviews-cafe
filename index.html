@@ -191,37 +191,75 @@
     <footer id="footer">Это займет не более 15 секунд</footer>
   </div>
 
-  <script>
-  // 1. Считываем ?id= из адреса страницы
-  const urlParams = new URLSearchParams(window.location.search);
-  const clientId = urlParams.get('id');
-
-  // 2. Находим кнопки на странице
-  const yandexBtn = document.getElementById('yandex-btn');
-  const gisBtn = document.getElementById('gis-btn');
-  const googleBtn = document.getElementById('google-btn');
-
-  // 3. Подгружаем конфигурацию
-  fetch('./clients.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Ошибка загрузки JSON');
-      return response.json();
-    })
-    .then(data => {
-      // Проверяем, есть ли такой клиент в базе
-      if (clientId && data[clientId]) {
-        const client = data[clientId];
-        
-        // Подставляем ссылки в атрибуты href
-        if (yandexBtn && client.yandex) yandexBtn.href = client.yandex;
-        if (gisBtn && client.gis) gisBtn.href = client.gis;
-        if (googleBtn && client.google) googleBtn.href = client.google;
-      } else {
-        console.warn('Клиент не найден или параметр id не передан!');
+    <script>
+    // 1. Локализация интерфейса
+    const translations = {
+      ru: {
+        title: "Поделитесь отзывом",
+        subtitle: "Выберите сервис, в котором вам удобнее поставить оценку:",
+        yandex: "Яндекс Карты",
+        google: "Google Карты",
+        footer: "Это займет не более 15 секунд"
+      },
+      uz: {
+        title: "Fikringizni qoldiring",
+        subtitle: "O'zingizga qulay xizmatni tanlab baho bering:",
+        yandex: "Yandex Xaritalar",
+        google: "Google Xaritalar",
+        footer: "Bu 15 soniyadan ko'p vaqt olmaydi"
+      },
+      en: {
+        title: "Leave a review",
+        subtitle: "Choose the service where you prefer to rate us:",
+        yandex: "Yandex Maps",
+        google: "Google Maps",
+        footer: "Takes less than 15 seconds"
       }
-    })
-    .catch(err => console.error('Ошибка:', err));
-</script>
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('subtitle').textContent = t.subtitle;
+      document.getElementById('label-yandex').textContent = t.yandex;
+      document.getElementById('label-google').textContent = t.google;
+      document.getElementById('footer').textContent = t.footer;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(lang === 'uz' ? "o'z" : lang));
+      });
+    }
+
+    // 2. Считываем ?id= из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientId = urlParams.get('id');
+
+    // 3. Находим кнопки по правильным ID из верстки
+    const yandexBtn = document.getElementById('btn-yandex');
+    const gisBtn = document.getElementById('btn-gis');
+    const googleBtn = document.getElementById('btn-google');
+
+    // 4. Подгружаем конфигурацию
+    fetch('./clients.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Ошибка загрузки JSON: ' + response.status);
+        return response.json();
+      })
+      .then(data => {
+        if (clientId && data[clientId]) {
+          const client = data[clientId];
+
+          if (yandexBtn && client.yandex) yandexBtn.href = client.yandex;
+          if (gisBtn && client.gis) gisBtn.href = client.gis;
+          if (googleBtn && client.google) googleBtn.href = client.google;
+        } else {
+          console.warn('Клиент с ID ' + clientId + ' не найден в базе.');
+        }
+      })
+      .catch(err => console.error('Ошибка конфигурации:', err));
+  </script>
 
 </body>
 </html>
