@@ -10,5 +10,11 @@
     "yandex": "https://yandex.uz/maps/org/60270030588/reviews/?add-review=true",
     "gis": "https://2gis.uz/tashkent/firm/70000001065296603",
     "google": "https://search.google.com/local/writereview?placeid=ChIJx02oWEeKrjgRQ9AMkTiV5dU"
+  },
+    "3": {
+    "name": "Magic City",
+    "yandex": "https://yandex.uz/maps/org/200424683050/reviews/?add-review=true",
+    "gis": "https://2gis.uz/tashkent/firm/70000001052477929/tab/reviews",
+    "google": "https://search.google.com/local/writereview?placeid=ChIJTXEMh_OLrjgROzMgwiDO3m0"
   }
 }
