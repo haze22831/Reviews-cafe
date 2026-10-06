@@ -6,11 +6,13 @@
     "gis": "https://2gis.uz/tashkent/firm/70000001037314618/tab/reviews",
     "google": "https://search.google.com/local/writereview?placeid=ChIJg5oxjzSKrjgR64NzeLnT50g"
   },
-    "2":
+      "2": {
+    "name": "Dream Park",
     "yandex": "https://yandex.uz/maps/org/1030062423/reviews/?add-review=true",
-    "gis": "https://2gis.uz/tashkent/firm/70000001065296603",
+    "gis": "https://2gis.uz/tashkent/firm/70000001064293962/tab/reviews",
     "google": "https://search.google.com/local/writereview?placeid=ChIJx02oWEeKrjgRQ9AMkTiV5dU"
   },
+
     "3": {
     "name": "Magic City",
     "yandex": "https://yandex.uz/maps/org/200424683050/reviews/?add-review=true",
